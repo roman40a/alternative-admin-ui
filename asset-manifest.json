@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/alternative-admin-ui/static/css/main.3cca2908.chunk.css",
+    "main.js": "/alternative-admin-ui/static/js/main.58dcfbd9.chunk.js",
+    "main.js.map": "/alternative-admin-ui/static/js/main.58dcfbd9.chunk.js.map",
+    "runtime-main.js": "/alternative-admin-ui/static/js/runtime-main.6f6929a4.js",
+    "runtime-main.js.map": "/alternative-admin-ui/static/js/runtime-main.6f6929a4.js.map",
+    "static/js/2.b2c96384.chunk.js": "/alternative-admin-ui/static/js/2.b2c96384.chunk.js",
+    "static/js/2.b2c96384.chunk.js.map": "/alternative-admin-ui/static/js/2.b2c96384.chunk.js.map",
+    "index.html": "/alternative-admin-ui/index.html",
+    "precache-manifest.a2a0f15344b1d3fe6d02b0fa05fce0f8.js": "/alternative-admin-ui/precache-manifest.a2a0f15344b1d3fe6d02b0fa05fce0f8.js",
+    "service-worker.js": "/alternative-admin-ui/service-worker.js",
+    "static/css/main.3cca2908.chunk.css.map": "/alternative-admin-ui/static/css/main.3cca2908.chunk.css.map"
+  }
+}
