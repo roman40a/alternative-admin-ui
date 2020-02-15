@@ -47,5 +47,5 @@
     "prettier": "1.18.2"
   },
   "homepage": "https://roman40a.github.io/alternative-admin-ui/",
-  "proxy":"https://soroka-task-manager.herokuapp.com/"
+  "proxy": "https://soroka-task-manager.herokuapp.com/"
 }

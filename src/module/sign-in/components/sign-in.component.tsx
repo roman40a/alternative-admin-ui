@@ -53,11 +53,10 @@ export type LoginData = {
 };
 
 export type SignInProps = {
-    isSubmit: boolean;
     onSubmit(data: LoginData): void;
 };
 
-export const SignIn: React.FC<SignInProps> = ({ onSubmit, isSubmit }) => {
+export const SignIn: React.FC<SignInProps> = ({ onSubmit }) => {
     const classes = useStyles();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -130,7 +129,6 @@ export const SignIn: React.FC<SignInProps> = ({ onSubmit, isSubmit }) => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        disabled={isSubmit}
                     >
                         Sign In
                     </Button>

@@ -5,7 +5,7 @@ export type User = {
     name: string;
 };
 
-const TOKEN_KEY = 'token';
+export const TOKEN_KEY = 'token';
 
 const saveTokenToLS = (token: string): void => {
     localStorage.setItem(TOKEN_KEY, token);
@@ -61,6 +61,35 @@ class Api {
                 saveTokenToLS(resData.token);
                 return {
                     name: resData.user.name,
+                };
+            }
+            return null;
+        } catch (e) {
+            return null;
+        }
+    };
+    getUser = async (): Promise<User | null> => {
+        try {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (!token) {
+                return null;
+            }
+            const myHeaders = new Headers();
+            myHeaders.append('Content-Type', 'application/json');
+            myHeaders.append('Authorization', `Bearer ${token}`);
+
+            const requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+            };
+
+            const res = await fetch('/users/me', requestOptions);
+            const status = res.status;
+
+            if (status === 200) {
+                const resData = await res.json();
+                return {
+                    name: resData.name,
                 };
             }
             return null;

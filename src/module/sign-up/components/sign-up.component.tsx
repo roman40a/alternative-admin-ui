@@ -48,7 +48,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export type SignUpProps = {
-    isSubmit: boolean;
     onSubmit(data: RegisterData): void;
 };
 
@@ -58,7 +57,7 @@ export type RegisterData = {
     password: string;
 };
 
-export const SignUp: React.FC<SignUpProps> = ({ onSubmit, isSubmit }) => {
+export const SignUp: React.FC<SignUpProps> = ({ onSubmit }) => {
     const [firstName, setFirstName] = React.useState('');
     const [lastName, setLastName] = React.useState('');
     const [email, setEmail] = React.useState('');
@@ -180,7 +179,6 @@ export const SignUp: React.FC<SignUpProps> = ({ onSubmit, isSubmit }) => {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        disabled={isSubmit}
                     >
                         Sign Up
                     </Button>
