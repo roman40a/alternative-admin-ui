@@ -47,8 +47,39 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignIn() {
+export type LoginData = {
+    email: string;
+    password: string;
+};
+
+export type SignInProps = {
+    isSubmit: boolean;
+    onSubmit(data: LoginData): void;
+};
+
+export const SignIn: React.FC<SignInProps> = ({ onSubmit, isSubmit }) => {
     const classes = useStyles();
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setEmail(value);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setPassword(value);
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data: LoginData = {
+            email,
+            password,
+        };
+        onSubmit(data);
+    };
 
     return (
         <Container component="main" maxWidth="xs">
@@ -60,7 +91,11 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={handleSubmit}
+                >
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -71,6 +106,7 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={handleEmailChange}
                     />
                     <TextField
                         variant="outlined"
@@ -82,6 +118,7 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={handlePasswordChange}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
@@ -93,6 +130,7 @@ export default function SignIn() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        disabled={isSubmit}
                     >
                         Sign In
                     </Button>
@@ -115,4 +153,4 @@ export default function SignIn() {
             </Box>
         </Container>
     );
-}
+};

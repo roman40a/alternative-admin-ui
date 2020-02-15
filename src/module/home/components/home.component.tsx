@@ -2,9 +2,13 @@ import React from 'react';
 import { NavBar } from './nav-bar.component';
 import { Container } from '@material-ui/core';
 
-export const Home: React.FC = () => (
+export type HomeProps = {
+    userName: string;
+};
+
+export const Home: React.FC<HomeProps> = ({ userName }) => (
     <div>
-        <NavBar />
+        <NavBar userName={userName} />
         <Container maxWidth="sm">Home</Container>
     </div>
 );

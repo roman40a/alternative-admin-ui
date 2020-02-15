@@ -25,7 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export function NavBar() {
+type NavBarProps = {
+    userName: string;
+};
+
+export const NavBar: React.FC<NavBarProps> = ({ userName }) => {
     const classes = useStyles();
 
     return (
@@ -43,11 +47,15 @@ export function NavBar() {
                     <Typography variant="h6" className={classes.title}>
                         Alternative
                     </Typography>
-                    <Link to={'/sign-up'} className={classes.register}>
-                        <Button color="inherit">Register</Button>
-                    </Link>
+                    {userName ? (
+                        <Button color="inherit">{`Hello, ${userName}`}</Button>
+                    ) : (
+                        <Link to={'/sign-up'} className={classes.register}>
+                            <Button color="inherit">Register</Button>
+                        </Link>
+                    )}
                 </Toolbar>
             </AppBar>
         </div>
     );
-}
+};

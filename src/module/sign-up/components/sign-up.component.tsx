@@ -47,7 +47,53 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export function SignUp() {
+export type SignUpProps = {
+    isSubmit: boolean;
+    onSubmit(data: RegisterData): void;
+};
+
+export type RegisterData = {
+    name: string;
+    email: string;
+    password: string;
+};
+
+export const SignUp: React.FC<SignUpProps> = ({ onSubmit, isSubmit }) => {
+    const [firstName, setFirstName] = React.useState('');
+    const [lastName, setLastName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setFirstName(value);
+    };
+
+    const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setLastName(value);
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setEmail(value);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setPassword(value);
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data: RegisterData = {
+            name: `${firstName} ${lastName}`,
+            email,
+            password,
+        };
+        onSubmit(data);
+    };
+
     const classes = useStyles();
 
     return (
@@ -60,7 +106,11 @@ export function SignUp() {
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form
+                    className={classes.form}
+                    noValidate
+                    onSubmit={handleSubmit}
+                >
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
@@ -72,6 +122,7 @@ export function SignUp() {
                                 id="firstName"
                                 label="First Name"
                                 autoFocus
+                                onChange={handleFirstNameChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -83,6 +134,7 @@ export function SignUp() {
                                 label="Last Name"
                                 name="lastName"
                                 autoComplete="lname"
+                                onChange={handleLastNameChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -94,6 +146,7 @@ export function SignUp() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
+                                onChange={handleEmailChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -106,6 +159,7 @@ export function SignUp() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+                                onChange={handlePasswordChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -126,6 +180,7 @@ export function SignUp() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        disabled={isSubmit}
                     >
                         Sign Up
                     </Button>
@@ -143,4 +198,4 @@ export function SignUp() {
             </Box>
         </Container>
     );
-}
+};
