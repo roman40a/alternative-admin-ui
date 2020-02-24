@@ -65,7 +65,7 @@ export class App extends React.PureComponent<{}, AppState> {
     };
 
     renderSuccess = (userName: string | undefined) => (
-        <Router>
+        <Router basename="/alternative-admin-ui">
             <Switch>
                 <Route
                     path="/sign-up"
