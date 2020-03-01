@@ -1,0 +1,1 @@
+{"version":3,"sources":["/Users/user/alternative-admin-ui/src/index.css"],"names":[],"mappings":"AAAA,gBACI,WAAY,CACZ,UACJ,CAEA,EACI,qBAAsB,CACtB,QAAS,CACT,SACJ","file":"main.c76e4c54.chunk.css","sourcesContent":["html, body, #root {\n    height: 100%;\n    width: 100%;\n}\n\n* {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n"]}
